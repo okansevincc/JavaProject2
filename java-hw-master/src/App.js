@@ -4,6 +4,8 @@ import ProductPage from "./components/ProductPage";
 import RegisterPage from "./components/RegisterPage";
 import PurchasePage from "./components/PurchasePage";
 
+import logo from "./logo.svg";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

@@ -1,16 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState, useNavigate } from "react";
+import React, { useEffect, useState } from "react";
 import jwtDecode from "../utils/jwtDecode";
 import getConfig from "../utils/getConfig";
+import { useNavigate } from "react-router-dom";
 
 const API_PURCHASE_URL = "http://localhost:8080/api/v1/purchase";
 const API_BOUGHT_URL = "http://localhost:8080/api/v1/bought";
 
 const PurchasePage = () => {
-  const navigate = useNavigate();
-
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [isBought, setIsBought] = useState(false);
+  const navigate = useNavigate();
 
   const userId = jwtDecode(localStorage.getItem("tokenKey"));
   const config = getConfig();
@@ -41,8 +41,10 @@ const PurchasePage = () => {
       .put(API_PURCHASE_URL, purchaseRequest, config)
       .then((res) => {
         console.log("Satın alma işlemi gerçekleşti!");
-      })
-      .catch(() => alert(() => "Something went wrong!"));
+        setPurchaseCompleted(true);
+        navigate("/product");  
+    })
+    .catch(() => alert("Something went wrong!"));
 
     setPurchaseCompleted(true);
   };
@@ -62,8 +64,6 @@ const PurchasePage = () => {
 
     setIsBought(false);
     setPurchaseCompleted(true);
-
-    navigate("/product");
   };
 
   return (

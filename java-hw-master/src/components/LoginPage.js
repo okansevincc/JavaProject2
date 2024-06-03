@@ -2,10 +2,8 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const API_BASE_URL = "http://localhost:8080/api/v1/auth/login";
-
 const LoginPage = () => {
   const navigate = useNavigate();
-
   const handleLogin = (event) => {
     event.preventDefault();
 

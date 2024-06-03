@@ -41,7 +41,9 @@ const HomePage = () => {
           justifyContent: "center",
           height: "100%",
         }}
-      ></div>
+      >
+        <h1>Welcome</h1>
+      </div>
     </div>
   );
 };
